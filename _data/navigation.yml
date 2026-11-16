@@ -1,0 +1,11 @@
+# Top navigation — the site is a single page, so every item is an in-page anchor.
+main:
+  - title: "CV"
+    url: "#cv"
+
+  - title: "Publications"
+    url: "#publications"
+
+  - title: "Contact"
+    url: "#contact"
+    class: "nav-contact"

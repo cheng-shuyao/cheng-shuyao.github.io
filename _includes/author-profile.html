@@ -1,0 +1,24 @@
+{% include base_path %}
+{% assign author = site.author %}
+
+<div itemscope itemtype="http://schema.org/Person">
+  <div class="author__avatar">
+    {% if author.avatar contains "://" %}
+      <img src="{{ author.avatar }}" alt="{{ author.name }}" itemprop="image" fetchpriority="high" />
+    {% else %}
+      <img src="{{ author.avatar | prepend: "/images/" | prepend: base_path }}" class="author__avatar" alt="{{ author.name }}" itemprop="image" fetchpriority="high" />
+    {% endif %}
+  </div>
+
+  <h3 class="author__name" itemprop="name">{{ author.name }}{% if author.name_zh %}<span class="author__name-zh">{{ author.name_zh }}</span>{% endif %}</h3>
+  {% if author.employer %}<p class="author__employer" itemprop="worksFor">{{ author.employer }}</p>{% endif %}
+
+  <ul class="author__contact">
+    {% if author.email %}
+      <li><i class="fas fa-fw fa-envelope icon-pad-right" aria-hidden="true"></i><a href="mailto:{{ author.email }}">{{ author.email }}</a></li>
+    {% endif %}
+    {% if author.address %}
+      <li><i class="fas fa-fw fa-location-dot icon-pad-right" aria-hidden="true"></i><span>{{ author.address }}</span></li>
+    {% endif %}
+  </ul>
+</div>
